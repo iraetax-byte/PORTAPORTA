@@ -1,0 +1,319 @@
+/* ══════════════════════════════════════════════════════════
+   PORTAPORTA — Global Styles
+   Aesthetic: Antique-clean, dark wood, vintage typography
+   ══════════════════════════════════════════════════════════ */
+
+/* ── Local fonts: Snell Roundhand + Helvetica Neue ── */
+@font-face {
+  font-family: 'Snell Roundhand';
+  src: url('/fonts/SnellRoundhand.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: url('/fonts/HelveticaNeue.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: url('/fonts/HelveticaNeue-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: url('/fonts/HelveticaNeue-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: url('/fonts/HelveticaNeue-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Crimson+Pro:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+
+:root {
+  /* ── Core palette ── */
+  --pp-black: #0a0908;
+  --pp-dark: #12100e;
+  --pp-panel: #161311;
+  --pp-surface: #1a1714;
+  --pp-wood-dark: #1e1a16;
+  --pp-wood: #2a2420;
+  --pp-wood-light: #3a322c;
+
+  /* ── Text ── */
+  --pp-cream: #d4c8b4;
+  --pp-cream-soft: #bfb5a3;
+  --pp-muted: #6b6259;
+  --pp-dim: #3e3832;
+
+  /* ── Accent (terracotta/gold) ── */
+  --pp-gold: #c4897a;
+  --pp-gold-soft: rgba(196, 137, 122, 0.6);
+  --pp-gold-faint: rgba(196, 137, 122, 0.15);
+  --pp-gold-ghost: rgba(196, 137, 122, 0.07);
+
+  /* ── Style colors ── */
+  --color-modernisme: #c4897a;
+  --color-gothic: #8fa89c;
+  --color-neoclassical: #b8a87a;
+  --color-deco: #9ab0c4;
+  --color-rationalism: #b49abf;
+
+  /* ── Border ── */
+  --pp-border: rgba(196, 137, 122, 0.12);
+  --pp-border-strong: rgba(196, 137, 122, 0.25);
+
+  /* ── Typography: Font stacks ── */
+  --font-display: 'Cormorant Garamond', 'Libre Baskerville', Georgia, serif;
+  --font-body: 'Crimson Pro', 'Libre Baskerville', Georgia, serif;
+  --font-ui: 'Crimson Pro', Georgia, serif;
+
+  /* ── Typography: Scale ── */
+  /* Cinematic title — door name overlays, hero moments */
+  --text-display:    clamp(32px, 5vw, 56px);
+  --text-display-sm: clamp(22px, 3vw, 36px);
+  /* Section & card headings */
+  --text-heading:    clamp(18px, 2.4vw, 26px);
+  --text-subheading: clamp(14px, 1.8vw, 18px);
+  /* Running body text */
+  --text-body:       14px;
+  --text-body-sm:    12px;
+  /* Captions & short descriptions */
+  --text-caption:    11px;
+  /* Metadata / tag labels */
+  --text-label:      9px;
+  --text-micro:      7px;
+
+  /* ── Typography: Weights & styles ── */
+  --weight-thin:     200;
+  --weight-light:    300;
+  --weight-regular:  400;
+  --weight-medium:   500;
+
+  /* ── Spacing ── */
+  --header-h: 52px;
+
+  /* ── Grain texture ── */
+  --grain: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  background: var(--pp-black);
+  color: var(--pp-cream);
+  font-family: var(--font-body);
+  font-weight: 300;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Oculta el cursor del SO — CustomCursor.jsx toma el control */
+  cursor: none !important;
+}
+
+/* Ocultar cursor nativo en todos los elementos */
+*, *::before, *::after {
+  cursor: none !important;
+}
+
+/* ── Film grain overlay ── */
+#root::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: var(--grain);
+  background-size: 128px 128px;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.5;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--pp-border-strong);
+  border-radius: 2px;
+}
+
+/* ── Animations ── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInSlow {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-24px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(24px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+@keyframes breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
+@keyframes lineReveal {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+.fade-in { animation: fadeIn 0.7s ease-out forwards; }
+.fade-in-slow { animation: fadeInSlow 1.2s ease forwards; }
+.slide-left { animation: slideInLeft 0.6s ease-out forwards; }
+.slide-right { animation: slideInRight 0.6s ease-out forwards; }
+
+/* Stagger helper */
+.stagger-1 { animation-delay: 0.1s; opacity: 0; }
+.stagger-2 { animation-delay: 0.2s; opacity: 0; }
+.stagger-3 { animation-delay: 0.35s; opacity: 0; }
+.stagger-4 { animation-delay: 0.5s; opacity: 0; }
+.stagger-5 { animation-delay: 0.65s; opacity: 0; }
+
+/* ══════════════════════════════════════════════════════════
+   TYPOGRAPHY SYSTEM
+   Hierarchy: display → heading → subheading → body → caption → label → micro
+   ══════════════════════════════════════════════════════════ */
+
+/* ── Display: cinematic door titles, hero watermarks ── */
+.pp-display {
+  font-family: var(--font-display);
+  font-size: var(--text-display);
+  font-weight: var(--weight-thin);
+  font-style: italic;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--pp-cream);
+}
+
+.pp-display--sm {
+  font-size: var(--text-display-sm);
+}
+
+/* ── Heading: section titles, panel headers ── */
+.pp-heading {
+  font-family: var(--font-display);
+  font-size: var(--text-heading);
+  font-weight: var(--weight-light);
+  font-style: italic;
+  line-height: 1.2;
+  color: var(--pp-cream);
+}
+
+/* ── Subheading: card names, secondary titles ── */
+.pp-subheading {
+  font-family: var(--font-display);
+  font-size: var(--text-subheading);
+  font-weight: var(--weight-light);
+  font-style: italic;
+  line-height: 1.3;
+  color: var(--pp-cream-soft);
+}
+
+/* ── Title (legacy alias — same as heading) ── */
+.pp-title {
+  font-family: var(--font-display);
+  font-weight: var(--weight-light);
+  font-style: italic;
+  line-height: 1.15;
+  color: var(--pp-cream);
+}
+
+/* ── Body: descriptive prose ── */
+.pp-body {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: var(--weight-light);
+  font-style: italic;
+  color: var(--pp-muted);
+  line-height: 1.8;
+}
+
+/* ── Caption: short descriptions inside cards ── */
+.pp-caption {
+  font-family: var(--font-body);
+  font-size: var(--text-caption);
+  font-weight: var(--weight-light);
+  font-style: italic;
+  color: var(--pp-muted);
+  line-height: 1.7;
+}
+
+/* ── Label: metadata tags, micro-UI ── */
+.pp-label {
+  font-family: var(--font-ui);
+  font-size: var(--text-label);
+  font-weight: var(--weight-regular);
+  letter-spacing: 3.5px;
+  text-transform: uppercase;
+  color: var(--pp-muted);
+}
+
+.pp-label--accent {
+  color: var(--pp-gold);
+}
+
+/* ── Micro: tiny identifiers, index numbers ── */
+.pp-micro {
+  font-family: var(--font-ui);
+  font-size: var(--text-micro);
+  font-weight: var(--weight-regular);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--pp-dim);
+}
+
+.pp-divider {
+  height: 1px;
+  background: var(--pp-border);
+  border: none;
+}
+
+.pp-divider--accent {
+  background: linear-gradient(90deg, transparent, var(--pp-gold-soft), transparent);
+}
+
+/* ── Cursor: custom for point-and-click feel ── */
+.cursor-explore {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='4' fill='none' stroke='%23c4897a' stroke-width='1'/%3E%3Ccircle cx='12' cy='12' r='1.5' fill='%23c4897a'/%3E%3C/svg%3E") 12 12, crosshair;
+}
